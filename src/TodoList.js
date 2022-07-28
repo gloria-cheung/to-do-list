@@ -3,13 +3,10 @@ import './TodoList.css';
 import Todo from './Todo';
 import NewTodoForm from './NewTodoForm';
 
+
 function TodoList() {
   const [state, setState] = useState({
-    todos: [
-      {task: "walk the dog"},
-      {task: "wash the dishes"},
-      {task: "do laundry"}
-    ]
+    todos: []
   });
  
   const addTodo = function(task) {
@@ -17,7 +14,21 @@ function TodoList() {
     setState(newTodos);
   };
 
-  const todos = state.todos.map(todo => <Todo task={todo.task}/>)
+  const deleteTodo = function(id) {
+    const newTodos = {todos: [...state.todos].filter(todo => todo.id !== id)};
+    setState(newTodos);
+  }
+
+  const todos = state.todos.map(todo => {
+    return (<
+      Todo 
+        task={todo.task}
+        key={todo.id}
+        id={todo.id}
+        deleteTodo={deleteTodo}
+      />
+    )
+  })
 
   return (
     <div className="TodoList">
