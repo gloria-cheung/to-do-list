@@ -7,7 +7,7 @@ function Todo(props) {
     task: props.task
   })
   
-  const {task, deleteTodo, id, editTodo} = props;
+  const {task, deleteTodo, id, editTodo, completed, toggleCompletion} = props;
 
   const handleSubmit = function(evt) {
     evt.preventDefault();
@@ -21,7 +21,6 @@ function Todo(props) {
       ...st, 
       task: evt.target.value
     }))
-    
   };
 
   const toggleEdit = function() {
@@ -30,6 +29,10 @@ function Todo(props) {
       isEditing: !state.isEditing
     }));
   };
+
+  const handleCompletion = function() {
+    toggleCompletion(id);
+  }
 
   let result;
   if (state.isEditing) {
@@ -52,7 +55,7 @@ function Todo(props) {
       <div className='Todo'>
         <button onClick={toggleEdit}>Edit</button>
         <button onClick={() => {deleteTodo(id)}}>X</button>
-        <li>
+        <li className={completed ? 'completed' : ''} onClick={handleCompletion} >
           {task}
         </li>
       </div>
