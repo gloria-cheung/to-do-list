@@ -6,7 +6,7 @@ import NewTodoForm from './NewTodoForm';
 
 function TodoList() {
   const [state, setState] = useState({
-    todos: []
+    todos: [] // [{task: ..., id: ...}, {task: ..., id: ...}]
   });
  
   const addTodo = function(task) {
@@ -19,6 +19,17 @@ function TodoList() {
     setState(newTodos);
   }
 
+  const editTodo = function(task,id) {
+    const newTodos ={todos: [...state.todos].map(todo => {
+      if (todo.id === id) {
+        return task;
+      } else {
+        return todo;
+      }
+    })};
+    setState(newTodos);
+  }
+
   const todos = state.todos.map(todo => {
     return (<
       Todo 
@@ -26,6 +37,7 @@ function TodoList() {
         key={todo.id}
         id={todo.id}
         deleteTodo={deleteTodo}
+        editTodo={editTodo}
       />
     )
   })
