@@ -1,11 +1,12 @@
 import './Todo.css';
 
 function Todo(props) {
- const {task} = props
+ const {task, deleteTodo, id} = props;
+
   return (
     <div className="Todo">
       <button>Edit</button>
-      <button>X</button>
+      <button onClick={() => {deleteTodo(id)}}>X</button>
       <li>
         {task}
       </li>
