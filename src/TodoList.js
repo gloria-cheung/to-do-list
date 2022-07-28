@@ -57,11 +57,11 @@ function TodoList() {
 
   return (
     <div className="TodoList">
-      <h1>Todo List!</h1>
-      <NewTodoForm addTodo={addTodo} />
+      <h1>Todo List! <span>A Simple React Todo List App</span></h1>
       <ul>
         {todos}
       </ul>
+      <NewTodoForm addTodo={addTodo} />
     </div>
   );
 }

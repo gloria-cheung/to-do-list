@@ -38,7 +38,7 @@ function Todo(props) {
   if (state.isEditing) {
     result = (
       <div className='Todo'>
-        <form onSubmit={handleSubmit}>
+        <form className='Todo-edit-form' onSubmit={handleSubmit}>
           <input 
             type='text'
             name={state.task}
@@ -47,17 +47,22 @@ function Todo(props) {
           />
           <button>Save</button>
         </form>
-        <button onClick={toggleEdit}>Cancel</button>
       </div>  
     )
   } else {
     result = (
       <div className='Todo'>
-        <button onClick={toggleEdit}>Edit</button>
-        <button onClick={() => {deleteTodo(id)}}>X</button>
-        <li className={completed ? 'completed' : ''} onClick={handleCompletion} >
+        <li className={completed ? 'Todo-task completed' : 'Todo-task'} onClick={handleCompletion} >
           {task}
         </li>
+        <div className='Todo-buttons'>
+          <button onClick={toggleEdit}>
+            <i class='fas fa-pen' />
+          </button>        
+          <button onClick={() => {deleteTodo(id)}}>
+          <i class='fas fa-trash' />
+          </button>
+        </div>
       </div>
     )
   }
