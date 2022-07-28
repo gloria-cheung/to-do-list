@@ -28,7 +28,18 @@ function TodoList() {
       }
     })};
     setState(newTodos);
-  }
+  };
+
+  const toggleCompletion = function(id) {
+    const newTodos ={todos: [...state.todos].map(todo => {
+      if (todo.id === id) {
+        return {...todo, completed: !todo.completed};
+      } else {
+        return todo;
+      }
+    })};
+    setState(newTodos);
+  };
 
   const todos = state.todos.map(todo => {
     return (<
@@ -38,6 +49,8 @@ function TodoList() {
         id={todo.id}
         deleteTodo={deleteTodo}
         editTodo={editTodo}
+        completed={todo.completed}
+        toggleCompletion={toggleCompletion}
       />
     )
   })
