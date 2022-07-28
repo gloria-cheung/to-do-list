@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import './NewTodoForm.css';
+import { v4 as uuidv4 } from 'uuid'
 
 function NewTodoForm(props) {
   const [state, setState] = useState({
@@ -11,12 +12,12 @@ function NewTodoForm(props) {
   const handleChange = function(evt) {
     setState({
       task: evt.target.value
-    })
+    });
   };
 
   const handleSubmit = function(evt) {
     evt.preventDefault();
-    addTodo(state);
+    addTodo({...state, id: uuidv4()});
     setState({task: ""});
   }
 
