@@ -17,7 +17,7 @@ function NewTodoForm(props) {
 
   const handleSubmit = function(evt) {
     evt.preventDefault();
-    addTodo({...state, id: uuidv4()});
+    addTodo({...state, id: uuidv4(), completed: false});
     setState({task: ""});
   }
 
