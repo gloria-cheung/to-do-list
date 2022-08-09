@@ -1,10 +1,11 @@
 # Todo List Project
 
-A Todo application created with Create React App where user can add new tasks to the todo list. Once task is added to list, it can be edited and saved or deleted. If user clicks on task, will strike through to show completion. 
+A Todo application created with Create React App where user can add new tasks to the todo list. Once task is added to list, it can be edited and saved or deleted. If user clicks on task, will strike through to show completion.
 
 ## Final Product
 
-Demo Video:
+### Demo Video:
+
 !["demo"](./public/todolistdemo.gif)
 
 ## Getting Started
